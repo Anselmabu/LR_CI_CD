@@ -33,3 +33,6 @@ jobs:
       - name: Run pytest
         run: |
           pytest
+      - name: Run pytest
+        run: pytest
+

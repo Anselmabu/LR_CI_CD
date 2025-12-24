@@ -2,7 +2,7 @@ class Car:
     def __init__(self, model: str, fuel_capacity: float) -> None:
         self._model = model
         self._max_fuel_capacity: float = fuel_capacity
-        self._fuel_in_tank: float = 0
+        self._fuel_in_tank: float = 10
 # trigger ci
 
 

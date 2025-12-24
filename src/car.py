@@ -5,6 +5,7 @@ class Car:
         self._fuel_in_tank: float = 0
 # trigger ci
 
+
     def get_current_fuel_level(self) -> float:
         return self._fuel_in_tank
 
@@ -21,3 +22,4 @@ class Car:
             raise Exception("Не доедем жеж...")
         self._fuel_in_tank -= fuel_burned
         return self.get_current_fuel_level()
+x=1

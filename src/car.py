@@ -3,6 +3,7 @@ class Car:
         self._model = model
         self._max_fuel_capacity: float = fuel_capacity
         self._fuel_in_tank: float = 0
+# trigger ci
 
     def get_current_fuel_level(self) -> float:
         return self._fuel_in_tank

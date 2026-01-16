@@ -31,7 +31,8 @@ class Car:
 
     def refuel_car(self, fuel_quantity: float) -> None:
         if self._max_fuel_capacity - self._fuel_in_tank < fuel_quantity:
-            raise OverfillError()
+            # Raising the exception *class* is valid and avoids RSE102.
+            raise OverfillError
         self._fuel_in_tank += fuel_quantity
 
     def drive(self, distance_km: float) -> float:
@@ -40,7 +41,7 @@ class Car:
 
         # Если топлива не хватает — поездка невозможна
         if self._fuel_in_tank < fuel_burned:
-            raise InsufficientFuelError()
+            raise InsufficientFuelError
 
         self._fuel_in_tank -= fuel_burned
         return self.get_current_fuel_level()

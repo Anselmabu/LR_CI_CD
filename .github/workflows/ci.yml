@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  pull_request:
+    branches: ["main", "master"]
+
+jobs:
+  test:
+    name: Unit tests (pytest)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest
+
+      - name: Run tests
+        run: pytest -q -ra
+
+  lint:
+    name: Ruff
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ruff check (fails on any issue)
+        uses: astral-sh/ruff-action@v3
+        with:
+          args: "check --config ruff.toml ."
+
+      - name: Ruff format check (fails if formatting differs)
+        uses: astral-sh/ruff-action@v3
+        with:
+          args: "format --check ."

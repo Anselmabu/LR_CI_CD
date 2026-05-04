@@ -1,6 +1,8 @@
 name: PR Check
 
 on:
+  push:
+    branches: [ main, master ]
   pull_request:
     branches: [ master, main ]
 
@@ -25,4 +27,3 @@ jobs:
       - uses: astral-sh/ruff-action@v3
         with:
           args: "check --config=ruff.toml src/"
-
